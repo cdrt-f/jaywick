@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jason Dukes — Folkestone</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Instrument+Serif&family=Caveat:wght@400;500;600&family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    --font-head: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    --head-weight: 600;
+    --head-tracking: -1px;
+    --white: #ffffff;
+    --paper: #fafafa;
+    --grey-50: #f5f5f7;
+    --grey-100: #e8e8eb;
+    --grey-200: #d0d0d4;
+    --grey-400: #86868b;
+    --grey-600: #555558;
+    --ink: #1d1d1f;
+    --navy: #0f1f3d;
+    --navy-2: #1a2f54;
+    --rule: #ebebed;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-body);
+    color: var(--ink);
+    background: var(--white);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4, h5, h6 { font-family: var(--font-head); }
+  .hand { font-family: 'Caveat', cursive; font-weight: 500; }
+  /* Landing splash */
+  .splash {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--white);
+  }
+  .splash .hello {
+    font-family: 'Bricolage Grotesque', 'Inter', sans-serif;
+    font-optical-sizing: auto;
+    font-size: 12vw;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--navy);
+    line-height: 1;
+    white-space: nowrap;
+    user-select: none;
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+  .splash .hello:hover { opacity: 0.75; }
+  .splash .figure {
+    width: 24vw;
+    max-width: 280px;
+    z-index: 2;
+    mix-blend-mode: multiply;
+  }
+  .splash .tagline {
+    position: absolute;
+    bottom: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--grey-600);
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  .splash .tagline:hover { color: var(--navy); }
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+  .container-wide { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+  .container-narrow { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  /* Utility bar */
+  .utility-bar {
+    background: var(--navy);
+    color: var(--white);
+    font-size: 12px;
+    padding: 8px 0;
+    letter-spacing: 0.2px;
+  }
+  .utility-bar .container-wide { display: flex; justify-content: space-between; align-items: center; }
+  .utility-bar a { color: var(--white); text-decoration: none; opacity: 0.85; }
+  .utility-bar a:hover { opacity: 1; }
+  /* Header */
+  header.site {
+    position: sticky; top: 0;
+    background: rgba(255,255,255,0.86);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid var(--rule);
+    z-index: 100;
+  }
+  header.site .container-wide { display: flex; justify-content: space-between; align-items: center; height: 56px; }
+  .logo { font-weight: 600; font-size: 16px; letter-spacing: -0.2px; color: var(--ink); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+  .logo-dot { width: 7px; height: 7px; background: var(--navy); border-radius: 50%; }
+  nav.primary { display: flex; gap: 28px; align-items: center; }
+  nav.primary a { color: var(--ink); text-decoration: none; font-size: 13px; opacity: 0.85; }
+  nav.primary a:hover { opacity: 1; }
+  nav.primary a.btn-mini { color: var(--white); opacity: 1; }
+  .btn-mini {
+    display: inline-block;
+    background: var(--navy);
+    color: var(--white);
+    padding: 7px 14px;
+    border-radius: 980px;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: 0.2s;
+  }
+  .btn-mini:hover { background: var(--ink); }
+  /* Hero — text left, scrolling work mosaic right */
+  .hero { padding: 64px 0 96px; overflow: hidden; }
+  .hero > .container { max-width: 1320px; display: grid; grid-template-columns: 1fr 1.3fr; gap: 64px; align-items: center; }
+  .hero-text { max-width: 520px; }
+  .hero-meta {
+    font-size: 13px;
+    color: var(--grey-400);
+    margin-bottom: 14px;
+    letter-spacing: 0.2px;
+  }
+  .hero h1 {
+    font-size: 46px;
+    line-height: 1.08;
+    letter-spacing: -1.3px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 22px;
+  }
+  .hero p.intro {
+    font-size: 18px;
+    color: var(--grey-600);
+    line-height: 1.55;
+    margin-bottom: 28px;
+    max-width: 460px;
+  }
+  .hero p.intro + p.intro { margin-top: -8px; }
+  .hero-ctas { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  /* Carousel mosaic */
+  .hero-mosaic {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    height: 640px;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+  }
+  .mosaic-col { overflow: hidden; }
+  .mosaic-col-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    animation: scroll-up 50s linear infinite;
+  }
+  .mosaic-col:nth-child(2) .mosaic-col-inner {
+    animation: scroll-down 40s linear infinite;
+  }
+  .mosaic-col-inner > div {
+    width: 100%;
+    border-radius: 14px;
+    background-size: cover;
+    background-position: center;
+    background-color: var(--grey-100);
+    flex-shrink: 0;
+  }
+  .mc-tall { aspect-ratio: 3/4; }
+  .mc-square { aspect-ratio: 1/1; }
+  .mc-wide { aspect-ratio: 4/3; }
+  @keyframes scroll-up {
+    from { transform: translateY(0); }
+    to { transform: translateY(-50%); }
+  }
+  @keyframes scroll-down {
+    from { transform: translateY(-50%); }
+    to { transform: translateY(0); }
+  }
+  .hero-mosaic:hover .mosaic-col-inner { animation-play-state: paused; }
+  .btn {
+    display: inline-block;
+    padding: 12px 22px;
+    background: var(--navy);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 980px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: 0.2s;
+  }
+  .btn:hover { background: var(--ink); }
+  .btn.ghost { background: transparent; color: var(--navy); border: 1px solid var(--navy); }
+  .btn.ghost:hover { background: var(--navy); color: var(--white); }
+  .hero .or-call { font-size: 14px; color: var(--grey-400); }
+  .hero .or-call a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--grey-200); padding-bottom: 1px; }
+  /* Sections */
+  section { padding: 96px 0; }
+  .sec-eyebrow {
+    font-size: 12px;
+    color: var(--grey-400);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 12px;
+    display: inline-block;
+  }
+  h2.sec-h {
+    font-size: 36px;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    font-weight: 600;
+    margin-bottom: 14px;
+    color: var(--ink);
+    max-width: 620px;
+  }
+  .sec-sub {
+    font-size: 17px;
+    color: var(--grey-600);
+    max-width: 540px;
+    line-height: 1.55;
+  }
+  .sec-head { margin-bottom: 48px; }
+  /* Services */
+  .services { background: var(--paper); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+  .service-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  .service-card {
+    background: var(--white);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 20px 18px;
+    transition: 0.25s;
+    position: relative;
+  }
+  .service-card:hover {
+    border-color: var(--navy);
+    transform: translateY(-2px);
+  }
+  .service-num {
+    font-size: 13px;
+    color: var(--grey-400);
+    margin-bottom: 14px;
+    letter-spacing: 0.5px;
+  }
+  .service-icon {
+    width: 52px;
+    height: 52px;
+    margin-bottom: 12px;
+    object-fit: contain;
+  }
+  .service-card h3 {
+    font-size: 19px;
+    letter-spacing: -0.3px;
+    margin-bottom: 6px;
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .service-card p {
+    font-size: 14px;
+    color: var(--grey-600);
+    line-height: 1.5;
+  }
+  /* Process — minimal, no doodles */
+  .process .container { display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; align-items: start; }
+  .process-list {
+    list-style: none;
+    counter-reset: step;
+  }
+  .process-list li {
+    counter-increment: step;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: 16px;
+    align-items: baseline;
+  }
+  .process-list li:first-child { padding-top: 0; }
+  .process-list li:last-child { border-bottom: none; }
+  .process-list li::before {
+    content: counter(step, decimal-leading-zero);
+    font-size: 13px;
+    color: var(--grey-400);
+    letter-spacing: 0.5px;
+  }
+  .process-list h4 {
+    font-size: 19px;
+    letter-spacing: -0.3px;
+    margin-bottom: 4px;
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .process-list p {
+    font-size: 14px;
+    color: var(--grey-600);
+  }
+  /* Work tiles */
+  .work { background: var(--paper); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+  .work .work-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+  @media (max-width: 640px) {
+    .work .work-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  .work-tile {
+    aspect-ratio: 4/5;
+    border-radius: 14px;
+    overflow: hidden;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .work-tile:hover { transform: scale(0.99); }
+  .work-tile::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 50%, rgba(15,31,61,0.6) 100%);
+  }
+  .work-tile .meta {
+    position: absolute;
+    bottom: 20px; left: 22px; right: 22px;
+    z-index: 2;
+    color: var(--white);
+  }
+  .work-tile .meta .tag {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    opacity: 0.8;
+    margin-bottom: 4px;
+  }
+  .work-tile .meta h4 {
+    font-size: 18px;
+    letter-spacing: -0.3px;
+    font-weight: 600;
+  }
+  /* About — Facebook profile card, but quieter */
+  .about-card {
+    background: #7FB3D5;
+    border: 1px solid var(--rule);
+    border-radius: 18px;
+    overflow: hidden;
+    max-width: 880px;
+    margin: 0 auto;
+  }
+  .about-body {
+    padding: 36px;
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 32px;
+    align-items: center;
+  }
+  .about-avatar {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: var(--grey-100) url('images/jason-portrait.jpg') center 30%/cover;
+    border: 5px solid var(--white);
+  }
+  .about-info { padding-top: 0; }
+  .about-info h3 { font-size: 24px; letter-spacing: -0.4px; margin-bottom: 4px; font-weight: 600; }
+  .about-info .role {
+    color: var(--grey-600);
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+  .about-stats {
+    display: flex;
+    gap: 28px;
+    padding: 14px 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 16px;
+  }
+  .about-stats .stat strong {
+    display: block;
+    font-size: 20px;
+    color: var(--ink);
+    letter-spacing: -0.4px;
+    font-weight: 600;
+  }
+  .about-stats .stat span {
+    font-size: 12px;
+    color: var(--grey-400);
+  }
+  .about-bio { font-size: 15px; color: var(--ink); margin-bottom: 14px; line-height: 1.6; max-width: 580px; }
+  .about-signature {
+    font-family: 'Caveat', cursive;
+    font-size: 32px;
+    color: var(--navy);
+    display: inline-block;
+    line-height: 1;
+  }
+  /* Testimonials — quieter post style */
+  .post-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    max-width: 880px;
+    margin: 0 auto;
+  }
+  .post {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 22px 24px;
+  }
+  .post-head { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .post-avatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--navy);
+    color: var(--white);
+    display: grid; place-items: center;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .post-meta { line-height: 1.3; }
+  .post-meta strong { font-size: 14px; color: var(--ink); font-weight: 600; }
+  .post-meta span { font-size: 12px; color: var(--grey-400); display: block; }
+  .post-body { font-size: 14px; color: var(--ink); line-height: 1.55; margin-bottom: 12px; }
+  .post-foot {
+    display: flex; gap: 14px;
+    padding-top: 12px;
+    border-top: 1px solid var(--rule);
+    font-size: 12px; color: var(--grey-400);
+  }
+  /* CTA */
+  .cta {
+    background: var(--navy);
+    color: var(--white);
+    padding: 96px 0;
+    text-align: center;
+  }
+  .cta h2 {
+    font-size: 40px;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+  .cta p {
+    font-size: 17px;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 32px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .cta .ctas { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .cta .btn { background: var(--white); color: var(--navy); }
+  .cta .btn:hover { background: var(--grey-100); }
+  .cta .btn.ghost { background: transparent; color: var(--white); border-color: rgba(255,255,255,0.4); }
+  .cta .btn.ghost:hover { background: var(--white); color: var(--navy); }
+  .contact-form {
+    max-width: 480px;
+    margin: 40px auto 0;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .contact-form label {
+    display: block;
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 6px;
+  }
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 10px;
+    padding: 11px 14px;
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--white);
+  }
+  .contact-form input::placeholder,
+  .contact-form textarea::placeholder { color: rgba(255,255,255,0.4); }
+  .contact-form textarea { min-height: 90px; resize: vertical; }
+  .contact-form input:focus,
+  .contact-form textarea:focus {
+    outline: none;
+    border-color: var(--white);
+    background: rgba(255,255,255,0.14);
+  }
+  .contact-form button {
+    align-self: flex-start;
+    background: var(--white);
+    color: var(--navy);
+    border: none;
+    padding: 12px 26px;
+    border-radius: 980px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.2s;
+    font-family: inherit;
+  }
+  .contact-form button:hover { background: var(--grey-100); }
+  /* Footer */
+  footer.site {
+    background: var(--paper);
+    padding: 56px 0 28px;
+    font-size: 13px;
+    color: var(--grey-600);
+    border-top: 1px solid var(--rule);
+  }
+  .foot-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 36px;
+  }
+  footer.site h6 {
+    color: var(--ink);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+  footer.site a { color: var(--grey-600); text-decoration: none; display: block; padding: 3px 0; }
+  footer.site a:hover { color: var(--ink); }
+  .foot-bottom {
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+    color: var(--grey-400);
+    font-size: 12px;
+  }
+  @media (max-width: 900px) {
+    .hero { padding: 40px 0 32px; }
+    .hero > .container { grid-template-columns: 1fr; gap: 32px; }
+    .hero-text { max-width: none; }
+    .hero-mosaic { height: 360px; order: -1; }
+    .process .container { grid-template-columns: 1fr; gap: 40px; }
+    .hero h1 { font-size: 34px; letter-spacing: -1px; }
+    h2.sec-h { font-size: 28px; letter-spacing: -0.6px; }
+    section { padding: 64px 0; }
+    nav.primary { display: none; }
+    .service-grid, .post-grid { grid-template-columns: 1fr; }
+    .about-body { grid-template-columns: 1fr; gap: 14px; justify-items: center; text-align: center; }
+    .about-avatar { width: 160px; height: 160px; }
+    .foot-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+    .cta h2 { font-size: 28px; }
+  }
+  @media (max-width: 480px) {
+    .utility-bar .container-wide > span { display: none; }
+    .utility-bar .container-wide { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+<section class="splash">
+  <img class="figure" src="images/jason-illustration-v3.gif" alt="Illustration of Jason with his dog Sid, cycling through different tools">
+  <a class="hello" href="#site-start">hello</a>
+  <a class="tagline" href="#site-start">have a look around</a>
+</section>
+<div class="utility-bar" id="site-start">
+  <div class="container-wide">
+    <span>Folkestone · Hythe · Sandgate · Hawkinge · Dover</span>
+    <a href="tel:+4407xxxxxxxx">07xxx xxxxxx →</a>
+  </div>
+</div>
+<header class="site">
+  <div class="container-wide">
+    <a href="#" class="logo">
+      <span class="logo-dot"></span>
+      Jason Dukes
+    </a>
+    <nav class="primary">
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact" class="btn-mini">Contact me</a>
+    </nav>
+  </div>
+</header>
+<section class="hero">
+  <div class="container">
+    <div class="hero-text">
+      <p class="hero-meta">Folkestone, Kent</p>
+      <h1>I'm Jason. I do building work in and around Folkestone.</h1>
+      <p class="intro">Renovations, carpentry, roofing, painting, garden builds. Whatever you need, I can help.</p>
+      <p class="intro">Have a look around, or just <a href="#contact" style="color: var(--ink); border-bottom: 1px solid var(--grey-200); padding-bottom: 1px; text-decoration: none;">give me a ring</a>.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn">Get a quote</a>
+        <span class="or-call">or call <a href="tel:+4407xxxxxxxx">07xxx xxxxxx</a></span>
+      </div>
+    </div>
+    <div class="hero-mosaic" aria-hidden="true">
+      <div class="mosaic-col">
+        <div class="mosaic-col-inner">
+          <div class="mc-tall" style="background-image:url('images/built-in-shelving-1.jpg')"></div>
+          <div class="mc-wide" style="background-image:url('images/bin-store-1.jpg')"></div>
+          <div class="mc-tall" style="background-image:url('images/alcove-cabinet.jpg')"></div>
+          <div class="mc-tall" style="background-image:url('images/bathroom-stanbridge.jpg')"></div>
+          <!-- duplicate set for seamless loop -->
+          <div class="mc-tall" style="background-image:url('images/built-in-shelving-1.jpg')"></div>
+          <div class="mc-wide" style="background-image:url('images/bin-store-1.jpg')"></div>
+          <div class="mc-tall" style="background-image:url('images/alcove-cabinet.jpg')"></div>
+          <div class="mc-tall" style="background-image:url('images/bathroom-stanbridge.jpg')"></div>
+        </div>
+      </div>
+      <div class="mosaic-col">
+        <div class="mosaic-col-inner">
+          <div class="mc-tall" style="background-image:url('images/built-in-shelving-2.jpg')"></div>
+          <div class="mc-wide" style="background-image:url('images/bin-store-2.jpg')"></div>
+          <div class="mc-tall" style="background-image:url('images/built-in-shelving-2.jpg')"></div>
+          <div class="mc-tall" style="background-image:url('images/built-in-shelving-2.jpg')"></div>
+          <div class="mc-wide" style="background-image:url('images/bin-store-2.jpg')"></div>
+          <div class="mc-tall" style="background-image:url('images/built-in-shelving-2.jpg')"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="services" id="services">
+  <div class="container">
+    <div class="sec-head">
+      <span class="sec-eyebrow">Services</span>
+      <h2 class="sec-h">Whatever you need, let's talk.</h2>
+    </div>
+    <div class="service-grid">
+      <div class="service-card">
+        <img class="service-icon" src="images/icons/icon-paintbrush.png" alt="">
+        <h3>Renovations</h3>
+        <p>Whether it's big or small. Anything from a couple of shelves to knocking down walls. Let's build your dream home.</p>
+      </div>
+      <div class="service-card">
+        <img class="service-icon" src="images/icons/icon-toolbox.png" alt="">
+        <h3>Carpentry</h3>
+        <p>Anything from putting together your Ikea chair to building a bespoke unit to fit your space.</p>
+      </div>
+      <div class="service-card">
+        <img class="service-icon" src="images/icons/icon-hammer.png" alt="">
+        <h3>Roofing</h3>
+        <p>My first trade! I'm happy to consult on any roofing needs.</p>
+      </div>
+      <div class="service-card">
+        <img class="service-icon" src="images/icons/icon-roller.png" alt="">
+        <h3>Painting &amp; decorating</h3>
+        <p>There's nothing like a fresh lick of paint. Interiors, exteriors, whatever you need. (I won't even judge your choice of colours)</p>
+      </div>
+      <div class="service-card">
+        <img class="service-icon" src="images/icons/icon-saw.png" alt="">
+        <h3>Garden builds</h3>
+        <p>From decking to fencing; pagodas to garden rooms. I've probably built it before, so let's talk.</p>
+      </div>
+      <div class="service-card" style="background: var(--navy); color: var(--white); border-color: var(--navy);">
+        <h3 style="color: var(--white);">Something else?</h3>
+        <p style="color: rgba(255,255,255,0.7);">Just ask, I'll take a look. (I don't do plumbing, but I know someone who does.)</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="process" id="process">
+  <div class="container">
+    <div>
+      <span class="sec-eyebrow">How it works</span>
+      <h2 class="sec-h">Four simple steps.</h2>
+      <p class="sec-sub">From a first chat to the job getting done.</p>
+    </div>
+    <ol class="process-list">
+      <li>
+        <div>
+          <h4>You get in touch</h4>
+          <p>Call me, email, or fill in the form below. Let me know roughly what you need.</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <h4>I'll take a look</h4>
+          <p>A bit of a chat to find out exactly what you need, and a look at the space.</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <h4>A quote</h4>
+          <p>You'll get a free quote within 72 hours. As realistic, detailed, and competitive as I can get it.</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <h4>The job gets done</h4>
+          <p>On time, to budget, tidy, and clean.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+<section class="work" id="work">
+  <div class="container-wide">
+    <div class="sec-head">
+      <span class="sec-eyebrow">Recent work</span>
+      <h2 class="sec-h">A few recent jobs</h2>
+      <p class="sec-sub">Real photos from Folkestone homes (and beyond).</p>
+    </div>
+    <div class="work-grid">
+      <div class="work-tile" style="background-image: url('images/built-in-shelving-2.jpg');">
+        <div class="meta"><h4>Levelling and paving front garden, and bespoke bin shed — Folkestone 2026</h4></div>
+      </div>
+      <div class="work-tile" style="background-image: url('images/bin-store-1.jpg');">
+        <div class="meta"><h4>Made to measure fitted cupboard and shelves — Folkestone 2025</h4></div>
+      </div>
+      <div class="work-tile" style="background-image: url('images/bathroom-stanbridge.jpg');">
+        <div class="meta"><h4>Colour drenched downstairs bathroom — Stanbridge 2026</h4></div>
+      </div>
+      <div class="work-tile" style="display: flex; align-items: center; justify-content: center; background: var(--paper); border: 1px dashed var(--grey-200);">
+        <span style="color: var(--grey-400); font-size: 15px;">More soon</span>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="about" id="about">
+  <div class="container">
+    <div class="sec-head" style="text-align: center;">
+      <span class="sec-eyebrow">About</span>
+      <h2 class="sec-h" style="margin-left: auto; margin-right: auto;">A bit about me.</h2>
+    </div>
+    <div class="about-card">
+      <div class="about-body">
+        <div class="about-avatar"></div>
+        <div class="about-info">
+          <h3>Jason Dukes</h3>
+          <p class="about-bio">I recently moved to the area from Essex with my wonderful wife Claire. We spend most of our free time running after our young grandchildren and walking on the beach with our dog, Sid. I love music and tennis trivia. I've been in the trades for 30 years, and I love what I do!</p>
+          <span class="about-signature hand">Jason</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="testimonials">
+  <div class="container">
+    <div class="sec-head" style="text-align: center;">
+      <span class="sec-eyebrow">Reviews</span>
+      <h2 class="sec-h" style="margin-left: auto; margin-right: auto;">From the neighbours.</h2>
+    </div>
+    <div class="post-grid" style="grid-template-columns: 1fr; max-width: 620px;">
+      <div class="post">
+        <div class="post-head">
+          <div class="post-avatar">C</div>
+          <div class="post-meta"><strong>Charlie</strong><span>Folkestone · added 1 day ago</span></div>
+        </div>
+        <p class="post-body">Jason completed an extensive renovation of our Victorian terrace in Folkestone, including knocking down and building a wall, pulling up all of the old carpets, replacing wallpaper, repairing dodgy plaster-work, filling in artex ceilings, and repainting the entire house. It was a mammoth job that he did much faster than we thought possible. He was always on time, worked hard, and was super tidy. He also has an encyclopaedic knowledge of Wimbledon finalists dating back to 1980. Who knew? I would thoroughly recommend him (in fact, I have about 20 times already).</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cta" id="contact">
+  <div class="container">
+    <h2>Whatever you need, let's talk</h2>
+    <p>Give me a ring or send me an email.</p>
+    <div class="ctas">
+      <a href="tel:+4407xxxxxxxx" class="btn">07xxx xxxxxx</a>
+      <a href="mailto:" class="btn ghost">email placeholder</a>
+    </div>
+    <!-- Webform target email is TBC — action below is a placeholder Formspree endpoint until a real one is set up -->
+    <form class="contact-form" action="https://formspree.io/f/PLACEHOLDER" method="POST">
+      <div>
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Your name" required>
+      </div>
+      <div>
+        <label for="tel">Tel</label>
+        <input type="tel" id="tel" name="tel" placeholder="07xxx xxxxxx">
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+      </div>
+      <div>
+        <label for="message">How can I help?</label>
+        <textarea id="message" name="message" placeholder="Tell me a bit about the job"></textarea>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</section>
+<footer class="site">
+  <div class="container-wide">
+    <div class="foot-grid">
+      <div>
+        <div class="logo" style="margin-bottom: 12px;"><span class="logo-dot"></span> Jason Dukes</div>
+        <p style="max-width: 320px;">Building services, carpentry, roofing, painting, and garden work across East Kent.</p>
+      </div>
+      <div>
+        <h6>Services</h6>
+        <a href="#">Renovation</a>
+        <a href="#">Carpentry</a>
+        <a href="#">Roofing</a>
+        <a href="#">Painting</a>
+        <a href="#">Garden work</a>
+      </div>
+      <div>
+        <h6>Areas</h6>
+        <a href="#">Folkestone</a>
+        <a href="#">Hythe</a>
+        <a href="#">Sandgate</a>
+        <a href="#">Hawkinge</a>
+        <a href="#">Dover</a>
+      </div>
+      <div>
+        <h6>Contact</h6>
+        <a href="tel:+4407xxxxxxxx">07xxx xxxxxx</a>
+        <a href="mailto:">email placeholder</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© Jason Dukes 2026. This website was built with love by a devoted son-in-law.</span>
+    </div>
+  </div>
+</footer>
+<script>
+  // Always start at the top of the page, even if the URL still has
+  // #site-start in it from a previous visit / click.
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+  if (window.location.hash) {
+    history.replaceState(null, '', window.location.pathname + window.location.search);
+  }
+  window.scrollTo(0, 0);
+
+  // Make the "hello" / "have a look around" links scroll smoothly
+  // without leaving a hash in the address bar.
+  document.querySelectorAll('a[href="#site-start"]').forEach((link) => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      document.getElementById('site-start').scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
+</html>
