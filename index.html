@@ -83,6 +83,10 @@
     transition: color 0.2s;
   }
   .splash .tagline:hover { color: var(--navy); }
+  @media (max-width: 640px) {
+    .splash .figure { width: 55vw; max-width: 320px; }
+    .splash .hello { font-size: 20vw; }
+  }
   .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   .container-wide { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
   .container-narrow { max-width: 760px; margin: 0 auto; padding: 0 24px; }
@@ -167,6 +171,7 @@
     display: flex;
     flex-direction: column;
     gap: 14px;
+    will-change: transform;
     animation: scroll-up 50s linear infinite;
   }
   .mosaic-col:nth-child(2) .mosaic-col-inner {
@@ -320,6 +325,9 @@
   }
   @media (max-width: 640px) {
     .work .work-grid { grid-template-columns: repeat(2, 1fr); }
+    .work-tile .meta { bottom: 10px; left: 10px; right: 10px; }
+    .work-tile .meta .tag { font-size: 9px; letter-spacing: 1px; }
+    .work-tile .meta h4 { font-size: 12px; line-height: 1.25; }
   }
   .work-tile {
     aspect-ratio: 4/5;
@@ -578,7 +586,6 @@
 <section class="splash">
   <img class="figure" src="images/jason-illustration-v3.gif" alt="Illustration of Jason with his dog Sid, cycling through different tools">
   <a class="hello" href="#site-start">hello</a>
-  <a class="tagline" href="#site-start">have a look around</a>
 </section>
 <div class="utility-bar" id="site-start">
   <div class="container-wide">
@@ -616,25 +623,25 @@
     <div class="hero-mosaic" aria-hidden="true">
       <div class="mosaic-col">
         <div class="mosaic-col-inner">
-          <div class="mc-tall" style="background-image:url('images/built-in-shelving-1.jpg')"></div>
-          <div class="mc-wide" style="background-image:url('images/bin-store-1.jpg')"></div>
-          <div class="mc-tall" style="background-image:url('images/alcove-cabinet.jpg')"></div>
+          <div class="mc-tall" style="background-image:url('images/built-in-shelving-1-web.jpg')"></div>
+          <div class="mc-wide" style="background-image:url('images/bin-store-1-web.jpg')"></div>
+          <div class="mc-tall" style="background-image:url('images/alcove-cabinet-web.jpg')"></div>
           <div class="mc-tall" style="background-image:url('images/bathroom-stanbridge.jpg')"></div>
           <!-- duplicate set for seamless loop -->
-          <div class="mc-tall" style="background-image:url('images/built-in-shelving-1.jpg')"></div>
-          <div class="mc-wide" style="background-image:url('images/bin-store-1.jpg')"></div>
-          <div class="mc-tall" style="background-image:url('images/alcove-cabinet.jpg')"></div>
+          <div class="mc-tall" style="background-image:url('images/built-in-shelving-1-web.jpg')"></div>
+          <div class="mc-wide" style="background-image:url('images/bin-store-1-web.jpg')"></div>
+          <div class="mc-tall" style="background-image:url('images/alcove-cabinet-web.jpg')"></div>
           <div class="mc-tall" style="background-image:url('images/bathroom-stanbridge.jpg')"></div>
         </div>
       </div>
       <div class="mosaic-col">
         <div class="mosaic-col-inner">
-          <div class="mc-tall" style="background-image:url('images/built-in-shelving-2.jpg')"></div>
-          <div class="mc-wide" style="background-image:url('images/bin-store-2.jpg')"></div>
-          <div class="mc-tall" style="background-image:url('images/built-in-shelving-2.jpg')"></div>
-          <div class="mc-tall" style="background-image:url('images/built-in-shelving-2.jpg')"></div>
-          <div class="mc-wide" style="background-image:url('images/bin-store-2.jpg')"></div>
-          <div class="mc-tall" style="background-image:url('images/built-in-shelving-2.jpg')"></div>
+          <div class="mc-tall" style="background-image:url('images/built-in-shelving-2-web.jpg')"></div>
+          <div class="mc-wide" style="background-image:url('images/bin-store-2-web.jpg')"></div>
+          <div class="mc-tall" style="background-image:url('images/built-in-shelving-2-web.jpg')"></div>
+          <div class="mc-tall" style="background-image:url('images/built-in-shelving-2-web.jpg')"></div>
+          <div class="mc-wide" style="background-image:url('images/bin-store-2-web.jpg')"></div>
+          <div class="mc-tall" style="background-image:url('images/built-in-shelving-2-web.jpg')"></div>
         </div>
       </div>
     </div>
@@ -722,10 +729,10 @@
       <p class="sec-sub">Real photos from Folkestone homes (and beyond).</p>
     </div>
     <div class="work-grid">
-      <div class="work-tile" style="background-image: url('images/built-in-shelving-2.jpg');">
+      <div class="work-tile" style="background-image: url('images/built-in-shelving-2-web.jpg');">
         <div class="meta"><h4>Levelling and paving front garden, and bespoke bin shed — Folkestone 2026</h4></div>
       </div>
-      <div class="work-tile" style="background-image: url('images/bin-store-1.jpg');">
+      <div class="work-tile" style="background-image: url('images/bin-store-1-web.jpg');">
         <div class="meta"><h4>Made to measure fitted cupboard and shelves — Folkestone 2025</h4></div>
       </div>
       <div class="work-tile" style="background-image: url('images/bathroom-stanbridge.jpg');">
