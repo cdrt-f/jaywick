@@ -463,11 +463,20 @@
     position: relative;
     aspect-ratio: 4/5;
     border-radius: 16px;
-    overflow: hidden;
     cursor: pointer;
     box-shadow: 0 8px 30px rgba(15,31,61,0.12);
     background: var(--grey-100);
+    perspective: 1400px;
   }
+  .ba-flip-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    transform-style: preserve-3d;
+    transition: transform 0.7s cubic-bezier(.4, .15, .2, 1);
+  }
+  .ba-flip.revealed .ba-flip-inner { transform: rotateY(180deg); }
   .ba-face {
     position: absolute;
     inset: 0;
@@ -476,15 +485,15 @@
     display: flex;
     align-items: flex-end;
     padding: 18px;
-    opacity: 0;
-    transition: opacity 0.4s ease;
+    border-radius: 16px;
+    overflow: hidden;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
   }
   .ba-face.ba-placeholder { align-items: center; justify-content: center; text-align: center; padding: 24px; }
   .ba-face.ba-placeholder span.ba-placeholder-text { font-size: 14px; color: var(--grey-400); max-width: 220px; }
-  .ba-before { opacity: 1; z-index: 2; }
-  .ba-after { z-index: 1; }
-  .ba-flip.revealed .ba-before { opacity: 0; }
-  .ba-flip.revealed .ba-after { opacity: 1; z-index: 2; }
+  .ba-before { z-index: 2; }
+  .ba-after { transform: rotateY(180deg); }
   .ba-tag {
     background: rgba(15,31,61,0.85);
     color: var(--white);
@@ -904,25 +913,29 @@
       <div class="ba-stage">
         <div class="ba-slide active">
           <div class="ba-flip">
-            <div class="ba-face ba-before ba-placeholder">
-              <span class="ba-tag" style="position: absolute; top: 14px; left: 14px;">Before</span>
-              <span class="ba-placeholder-text">Photo coming soon</span>
-            </div>
-            <div class="ba-face ba-after ba-placeholder">
-              <span class="ba-tag" style="position: absolute; top: 14px; left: 14px;">After</span>
-              <span class="ba-placeholder-text">Photo coming soon</span>
+            <div class="ba-flip-inner">
+              <div class="ba-face ba-before ba-placeholder">
+                <span class="ba-tag" style="position: absolute; top: 14px; left: 14px;">Before</span>
+                <span class="ba-placeholder-text">Photo coming soon</span>
+              </div>
+              <div class="ba-face ba-after ba-placeholder">
+                <span class="ba-tag" style="position: absolute; top: 14px; left: 14px;">After</span>
+                <span class="ba-placeholder-text">Photo coming soon</span>
+              </div>
             </div>
           </div>
         </div>
         <div class="ba-slide">
           <div class="ba-flip">
-            <div class="ba-face ba-before ba-placeholder">
-              <span class="ba-tag" style="position: absolute; top: 14px; left: 14px;">Before</span>
-              <span class="ba-placeholder-text">Photo coming soon</span>
-            </div>
-            <div class="ba-face ba-after ba-placeholder">
-              <span class="ba-tag" style="position: absolute; top: 14px; left: 14px;">After</span>
-              <span class="ba-placeholder-text">Photo coming soon</span>
+            <div class="ba-flip-inner">
+              <div class="ba-face ba-before ba-placeholder">
+                <span class="ba-tag" style="position: absolute; top: 14px; left: 14px;">Before</span>
+                <span class="ba-placeholder-text">Photo coming soon</span>
+              </div>
+              <div class="ba-face ba-after ba-placeholder">
+                <span class="ba-tag" style="position: absolute; top: 14px; left: 14px;">After</span>
+                <span class="ba-placeholder-text">Photo coming soon</span>
+              </div>
             </div>
           </div>
         </div>
