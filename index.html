@@ -495,6 +495,9 @@
   .ba-before { z-index: 2; }
   .ba-after { transform: rotateY(180deg); }
   .ba-tag {
+    position: absolute;
+    top: 14px;
+    left: 14px;
     background: rgba(15,31,61,0.85);
     color: var(--white);
     font-size: 12px;
@@ -914,13 +917,11 @@
         <div class="ba-slide active">
           <div class="ba-flip">
             <div class="ba-flip-inner">
-              <div class="ba-face ba-before ba-placeholder">
-                <span class="ba-tag" style="position: absolute; top: 14px; left: 14px;">Before</span>
-                <span class="ba-placeholder-text">Photo coming soon</span>
+              <div class="ba-face ba-before" style="background-image: url('images/before-after-1-before.jpg');">
+                <span class="ba-tag">Before</span>
               </div>
-              <div class="ba-face ba-after ba-placeholder">
-                <span class="ba-tag" style="position: absolute; top: 14px; left: 14px;">After</span>
-                <span class="ba-placeholder-text">Photo coming soon</span>
+              <div class="ba-face ba-after" style="background-image: url('images/before-after-1-after.jpg');">
+                <span class="ba-tag">After</span>
               </div>
             </div>
           </div>
@@ -929,11 +930,11 @@
           <div class="ba-flip">
             <div class="ba-flip-inner">
               <div class="ba-face ba-before ba-placeholder">
-                <span class="ba-tag" style="position: absolute; top: 14px; left: 14px;">Before</span>
+                <span class="ba-tag">Before</span>
                 <span class="ba-placeholder-text">Photo coming soon</span>
               </div>
               <div class="ba-face ba-after ba-placeholder">
-                <span class="ba-tag" style="position: absolute; top: 14px; left: 14px;">After</span>
+                <span class="ba-tag">After</span>
                 <span class="ba-placeholder-text">Photo coming soon</span>
               </div>
             </div>
