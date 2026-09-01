@@ -480,7 +480,9 @@
   .ba-face {
     position: absolute;
     inset: 0;
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: var(--white);
     background-position: center;
     display: flex;
     align-items: flex-end;
@@ -507,6 +509,7 @@
     border-radius: 980px;
     font-weight: 600;
   }
+  .ba-caption { text-align: center; margin-bottom: 14px; font-size: 15px; font-weight: 600; color: var(--ink); }
   .ba-hint { text-align: center; margin-top: 14px; font-size: 13px; color: var(--grey-400); }
   .ba-dots { display: flex; justify-content: center; gap: 6px; margin-top: 12px; }
   .ba-dots span { width: 6px; height: 6px; border-radius: 50%; background: var(--grey-200); transition: 0.2s; }
@@ -795,10 +798,10 @@
         <div class="mosaic-col-inner">
           <div class="mc-tall" style="background-image:url('images/built-in-shelving-2-web.jpg')"></div>
           <div class="mc-wide" style="background-image:url('images/bin-store-2-web.jpg')"></div>
-          <div class="mc-tall" style="background-image:url('images/built-in-shelving-2-web.jpg')"></div>
+          <div class="mc-tall" style="background-image:url('images/before-after-1-after.jpg')"></div>
           <div class="mc-tall" style="background-image:url('images/built-in-shelving-2-web.jpg')"></div>
           <div class="mc-wide" style="background-image:url('images/bin-store-2-web.jpg')"></div>
-          <div class="mc-tall" style="background-image:url('images/built-in-shelving-2-web.jpg')"></div>
+          <div class="mc-tall" style="background-image:url('images/before-after-1-after.jpg')"></div>
         </div>
       </div>
     </div>
@@ -898,6 +901,10 @@
         <div class="meta"><h4>Colour drenched downstairs bathroom — Stanbridge 2026</h4></div>
         <span class="tap-hint">i</span>
       </div>
+      <div class="work-tile" style="background-image: url('images/before-after-1-after.jpg');">
+        <div class="meta"><h4>Made to measure fitted cupboard and shelves. Dover 2026</h4></div>
+        <span class="tap-hint">i</span>
+      </div>
       <div class="work-tile no-caption" style="display: flex; align-items: center; justify-content: center; background: var(--paper); border: 1px dashed var(--grey-200);">
         <span style="color: var(--grey-400); font-size: 15px;">More soon</span>
       </div>
@@ -915,6 +922,7 @@
       <button type="button" class="ba-nav ba-prev" aria-label="Previous">‹</button>
       <div class="ba-stage">
         <div class="ba-slide active">
+          <p class="ba-caption">Made to measure fitted cupboard and shelves. Dover 2026</p>
           <div class="ba-flip">
             <div class="ba-flip-inner">
               <div class="ba-face ba-before" style="background-image: url('images/before-after-1-before.jpg');">
